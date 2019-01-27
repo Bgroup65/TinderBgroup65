@@ -31,7 +31,7 @@ function AlignItemsList(props) {
                 <Avatar alt="Tinder Picture" src={p.Image} />
               </ListItemAvatar>
               <ListItemText
-                primary={p.Name + " " +p.FamliyName}
+                primary={p.Name + " " +p.FamilyName}
               />
             </ListItem>)}
         

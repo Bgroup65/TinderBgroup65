@@ -79,7 +79,7 @@ class PersonCard extends Component {
                     </Card>}
 
                     <AlignItemsList title="Favorite People" persons = {this.state.favorites}/>
-                    {this.state.counter=== (this.props.personList.length - 1) && <Button onClick={()=>this.props.history.push('/')}  style={{color:"white"}}>Back To Main</Button>}
+                    {this.state.counter=== (this.props.personList.length - 1) && <Button href="/bgroup65/test1/Mobile/Tar4/" style={{color:"white"}}>Back To Main</Button>}
                 </div>
             </MuiThemeProvider>
         );

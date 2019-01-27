@@ -16,8 +16,9 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    let url = "";
-    window.location.hostname === "localhost" ? url = 'http://localhost:52758/api/persons' : url = '../api/persons';
+    // let url = "";
+    //window.location.hostname === "localhost" ? url = 'http://localhost:52758/api/persons' :
+     const url = 'http://proj.ruppin.ac.il/bgroup65/test1/tar4/api/persons';
       fetch(url)
       .then(this.handleErrors)
       .then(response => response.json())
