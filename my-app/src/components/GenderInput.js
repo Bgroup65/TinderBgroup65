@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { GoSearch } from "react-icons/go";
+import React from 'react';
+//import { GoSearch } from "react-icons/go";
 
 class GenderInput extends React.Component{
 constructor(props){
@@ -19,10 +19,10 @@ render(){
         <div>
             <h3>Choose partner gender: </h3>
             <div onChange={this.setGender}>
-                <input type='radio' name="gender" value="male"/>
+                <input type='radio' name="gender" value="Male"/>
                 <label>Male</label>
                 <br/>
-                <input type='radio' name="gender" value="female"/>
+                <input type='radio' name="gender" value="Female"/>
                 <label>Female</label>
             </div>
             <br/>

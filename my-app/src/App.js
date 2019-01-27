@@ -4,18 +4,32 @@ import './App.css';
 import FillDetails from "./components/Details";
 import NavbarPage from './components/Header';
 import PersonCard from "./components/person";
-import personFromDB from './components/persons';
-import { Route,withRouter } from 'react-router';
-
+//import personFromDB from './components/persons';
+import { Route, withRouter } from 'react-router';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.ValidateInputs = this.ValidateInputs.bind(this);
     this.state = {
-      personList : []
+      personList: []
     }
   }
+  componentDidMount() {
+    let url = "";
+    window.location.hostname === "localhost" ? url = 'http://localhost:52758/api/persons' : url = '../api/persons';
+      fetch(url)
+      .then(this.handleErrors)
+      .then(response => response.json())
+      .then(data => this.setState({personList:data}));
+  }
+  handleErrors = (response) => {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+  }
+
   //validate user inputs before moving to next page
   ValidateInputs(isValid, minAge, maxAge, gender) {
     if (!isValid) {
@@ -24,8 +38,8 @@ class App extends Component {
     }
     else {
       //filter users according to user choice and navigate to user's choice of people
-      const temp = personFromDB.filter((p) =>
-        p.age >= minAge && p.age <= maxAge && p.gender === gender
+      const temp = this.state.personList.filter((p) =>
+        p.Age >= minAge && p.Age <= maxAge && p.Gender === gender
       );
       if (temp.length === 0) {
         alert("Nothing to show:(");
@@ -40,7 +54,6 @@ class App extends Component {
 
   render() {
     return (
-
       <div className="App">
         <NavbarPage name="Look for new people in Tinder" desc="Bgroup65" />
         <header className="App-header">
@@ -55,7 +68,6 @@ class App extends Component {
           </div>
         </header>
       </div>
-
     );
   }
 }
